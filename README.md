@@ -17,14 +17,16 @@ todo:
 
 To install on debian 12:
 ```
-sudo apt-get install golang-go -y
-sudo ufw allow 80/tcp # handshake
-sudo ufw allow 4000:65535/udp # webrtc
+sudo apt-get install golang-go git -y
+sudo ufw allow 80/tcp # add webserver port to firewall
+sudo ufw allow 4000:65535/udp # add webrtc ports to firewall
+cd ~
+git clone https://github.com/steveseguin/broadcast-box-with-vdon-support
 ```
-and to the run
+and to then run
 ```
 cd ~
-cd broadcast-box
+cd broadcast-box-with-vdon-support
 APP_ENV=production go run .
 ```
 
