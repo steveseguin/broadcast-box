@@ -4,7 +4,7 @@
 - `whep` header value returned on whip publishing
 - minor other tweak
 
-The end result is a Meshcast-like alternative that you can self-host, but that also supports OBS WHIP output.
+The end result is a Meshcast-like alternative that you can self-host, but that also supports OBS WHIP output.  Broadcast-box I found to be a bit unstable mind you, so consider this more a proof of concept or work-in-progress. There are other SFU/WHIP/WHEP servers out there as well that you may wish to use instead, modifying as needed, as described below.
 
 todo: 
 - auto-generate stream token for publishers
