@@ -26,7 +26,8 @@ serve -s build
 To install the webRTC portion:
 ```
 sudo apt-get install golang-go -y
-sudo ufw allow 8080/tcp
+sudo ufw allow 8080/tcp # handshake
+sudo ufw allow 4000:65535/udp # webrtc
 ```
 and to the run
 ```
