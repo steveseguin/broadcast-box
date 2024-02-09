@@ -1,3 +1,4 @@
+To install the web service
 ```
 sudo apt-get update -y
 sudo apt-get upgrade -y
@@ -5,13 +6,34 @@ sudo apt-get install npm -y
 sudo npm install -g n
 sudo n stable
 sudo apt-get install git
+cd ~
 git clone https://github.com/steveseguin/broadcast-box
 cd broadcast-box
 cd web
 npm install
-npm start
+npm run build
+sudo ufw allow 3000/tcp
+npm install -g serve
+```
+Now to start the service
+```
+cd ~
+cd broadcast-box
+cd web
+serve -s build
 ```
 
+To install the webRTC portion:
+```
+sudo apt-get install golang-go -y
+sudo ufw allow 8080/tcp
+```
+and to the run
+```
+cd ~
+cd broadcast-box
+APP_ENV=production go run .
+```
 
 # Broadcast Box
 
