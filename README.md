@@ -54,13 +54,13 @@ res.Header().Set("Access-Control-Allow-Headers", "*")
 
 To use this with VDO.Ninja then, in place of Meshcast, you can do:
 
-##### publisher
+#### publisher
 `https://vdo.ninja/alpha/?whippush=https://myserver.io/api/whip&whippushtoken=steve&webcam&push=YjKcERS`
 
-##### (viewer via WHEP via VDO.Ninja P2P
+#### viewer via WHEP via VDO.Ninja P2P
 `https://vdo.ninja/alpha/?view=YjKcERS`
 
-#####viewer via WHEP directly
+#### viewer via WHEP directly
 `https://vdo.ninja/alpha/?hidemenu&whepplay=https://myserver.io/api/whep&whepplaytoken=steve `
 
 You'll note you can view the stream two different ways using VDO.Ninja; as p2p guest or as a standalone viewer, which can be customized easily at https://vdo.ninja/alpha/whip
