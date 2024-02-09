@@ -1,3 +1,18 @@
+```
+sudo apt-get update -y
+sudo apt-get upgrade -y
+sudo apt-get install npm -y
+sudo npm install -g n
+sudo n stable
+sudo apt-get install git
+git clone https://github.com/steveseguin/broadcast-box
+cd broadcast-box
+cd web
+npm install
+npm start
+```
+
+
 # Broadcast Box
 
 [![License][license-image]][license-url]
