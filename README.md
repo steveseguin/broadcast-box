@@ -1,6 +1,6 @@
 
 
-To install the webRTC portion:
+To install on debian 12:
 ```
 sudo apt-get install golang-go -y
 sudo ufw allow 8080/tcp # handshake
@@ -12,7 +12,9 @@ cd ~
 cd broadcast-box
 APP_ENV=production go run .
 ```
+
 publish to http://123.123.123.123:8080/api/whip /w bearer token
+
 view from http://123.123.123.123:8080/api/whep /w bearer token
 
 
