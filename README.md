@@ -4,7 +4,7 @@
 - `whep` header value returned on whip publishing
 - minor other tweak
 
-The end result is a Meshcast-like alternative that you can self-host, but that also (sorta) supports OBS WHIP output.
+The end result is a Meshcast-like alternative that you can self-host, but that also supports OBS WHIP output.
 
 todo: 
 - auto-generate stream token for publishers
