@@ -35,7 +35,7 @@ For use with VDO.Ninja, get a domain name and use Cloudflare as your DNS provide
 
 ## Key modification
 
-For a WHIP + WHEP server to support "Meshcast"-like functionality in VDO.Ninja, the WHIP header response needs to contain the WHEP playback URL.
+For a WHIP + WHEP server to support "Meshcast"-like functionality in VDO.Ninja, the WHIP header response needs to contain the WHEP playback URL.  That was done to this modified version of Broadcast-box, but it can be done to pretty much any WHIP/WHEP server fairly easily.
 
 `whep`:`/api/whep|streamtokenhere` is an example of what the header response could look like.
 
