@@ -144,7 +144,7 @@ func indexHTMLWhenNotFound(fs http.FileSystem) http.Handler {
 	return http.HandlerFunc(func(resp http.ResponseWriter, req *http.Request) {
 		_, err := fs.Open(path.Clean(req.URL.Path)) // Do not allow path traversals.
 		if errors.Is(err, os.ErrNotExist) {
-			http.ServeFile(resp, req, "./web/build/index.html")
+			http.ServeFile(resp, req, "./html/index.html")
 
 			return
 		}
@@ -213,7 +213,7 @@ func main() {
 	}
 
 	mux := http.NewServeMux()
-	mux.Handle("/", indexHTMLWhenNotFound(http.Dir("./web/build")))
+	mux.Handle("/", indexHTMLWhenNotFound(http.Dir("./html")))
 	mux.HandleFunc("/api/whip", corsHandler(whipHandler))
 	mux.HandleFunc("/api/whep", corsHandler(whepHandler))
 	mux.HandleFunc("/api/sse/", corsHandler(whepServerSentEventsHandler))

@@ -1,8 +1,3 @@
-FROM node AS web-build
-WORKDIR /broadcast-box/web
-COPY . /broadcast-box
-RUN npm install && npm run build
-
 FROM golang:alpine AS go-build
 WORKDIR /broadcast-box
 ENV GOPROXY=direct
