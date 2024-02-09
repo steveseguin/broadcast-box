@@ -63,9 +63,12 @@ func whipHandler(res http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	trimmedStreamkey := strings.TrimPrefix(streamKey, "Bearer ")
+	
 	res.Header().Add("Location", "/api/whip")
 	res.Header().Add("Content-Type", "application/sdp")
-	res.Header().Add("whep", "/api/whep|"+streamKey)
+
+	res.Header().Add("whep", "/api/whep|"+trimmedStreamkey)
 	res.WriteHeader(http.StatusCreated)
 	fmt.Fprint(res, answer)
 }
