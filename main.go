@@ -65,6 +65,7 @@ func whipHandler(res http.ResponseWriter, r *http.Request) {
 
 	res.Header().Add("Location", "/api/whip")
 	res.Header().Add("Content-Type", "application/sdp")
+	res.Header().Add("whep", "/api/whep|"+streamKey)
 	res.WriteHeader(http.StatusCreated)
 	fmt.Fprint(res, answer)
 }
