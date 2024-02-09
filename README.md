@@ -1,4 +1,14 @@
+## Broadcast-box, modded for VDO.Ninja
 
+- The web code is removed
+- `whep` header value returned on whip publishing
+- minor other tweak
+
+The end result is a Meshcast-like alternative
+
+todo: auto-generate stream token for publishers
+
+### Install
 
 To install on debian 12:
 ```
