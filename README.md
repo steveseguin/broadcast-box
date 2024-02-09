@@ -27,7 +27,43 @@ publish to http://123.123.123.123:8080/api/whip /w bearer token
 
 view from http://123.123.123.123:8080/api/whep /w bearer token
 
-## Design
+## Key modification
+
+For a WHIP + WHEP server to support "Meshcast"-like functionality in VDO.Ninja, the WHIP header response needs to contain the WHEP playback URL.
+
+`whep`:`/api/whep|streamtokenhere` is an example of what the header response could look like.
+
+and for WHIP/WHEP servers that support it, `whep`:`/api/whep/streamtokenhere`, this also would
+
+or a full URL can be provided, like this would work, `whep`:`https://whep.yourdomain.com/?token=streamtokenhere`
+
+This can be seen inthe code example below:
+```
+streamKey := r.Header.Get("Authorization")
+trimmedStreamkey := strings.TrimPrefix(streamKey, "Bearer ")
+res.Header().Add("Location", "/api/whip")
+res.Header().Add("Content-Type", "application/sdp")
+
+res.Header().Add("whep", "/api/whep|"+trimmedStreamkey)  // <<============== THIS IS IMPORTANT
+res.Header().Set("Access-Control-Expose-Headers", "*")  // << ===== And this as well
+
+res.Header().Set("Access-Control-Allow-Origin", "*")
+res.Header().Set("Access-Control-Allow-Methods", "*")
+res.Header().Set("Access-Control-Allow-Headers", "*")
+```
+
+To use this with VDO.Ninja then, in place of Meshcast, you can do:
+```
+https://vdo.ninja/alpha/?whippush=https://myserver.io/api/whip&whippushtoken=steve&webcam&push=YjKcERS  (publisher)
+https://vdo.ninja/alpha/?view=YjKcERS (viewer via WHEP via VDO.Ninja P2P)
+https://vdo.ninja/alpha/?hidemenu&whepplay=https%3A%2F%2Fmyserver.io%2Fapi%2Fwhip&whepplaytoken=steve (viewer via WHEP directly)
+```
+
+You'll note you can view the stream two different ways using VDO.Ninja; as p2p guest or as a standalone viewer.
+
+Also note, VDO.Ninja has an HTTP (non-SSL) domain version hosted at https://insecure.vdo.ninja, if you need to playback a WHEP feed from an insecure (http-only) WHEP server.  You can't easily mix HTTP and HTTPS protocols otherwise.
+
+## API Design for Broadcast-box
 
 The backend exposes three endpoints (the status page is optional, if hosting locally).
 
