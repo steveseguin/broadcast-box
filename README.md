@@ -6,14 +6,18 @@
 
 The end result is a Meshcast-like alternative
 
-todo: auto-generate stream token for publishers
+todo: 
+- auto-generate stream token for publishers
+- make more stable
+- fix issues with OBS Studio WHIP output
+- test iOS / iPad compatibility
 
 ### Install
 
 To install on debian 12:
 ```
 sudo apt-get install golang-go -y
-sudo ufw allow 8080/tcp # handshake
+sudo ufw allow 80/tcp # handshake
 sudo ufw allow 4000:65535/udp # webrtc
 ```
 and to the run
@@ -23,9 +27,11 @@ cd broadcast-box
 APP_ENV=production go run .
 ```
 
-publish to http://123.123.123.123:8080/api/whip /w bearer token
+publish to http://123.123.123.123:80/api/whip /w bearer token
 
-view from http://123.123.123.123:8080/api/whep /w bearer token
+view from http://123.123.123.123:80/api/whep /w bearer token
+
+For use with VDO.Ninja, get a domain name and use Cloudflare as your DNS provider, making use of their Flexible SSL option. This will provided simple SSL without needing to deal with SSL ourselves. Once you SSL enabled, just use https://myserver.io/api/whip and https://myserver.io/api/whep instead. This will be far more VDO.Ninja friendly, as to publish video using VDO.Ninja to WHIP requires SSL.
 
 ## Key modification
 
