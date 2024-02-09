@@ -56,12 +56,14 @@ To use this with VDO.Ninja then, in place of Meshcast, you can do:
 ```
 https://vdo.ninja/alpha/?whippush=https://myserver.io/api/whip&whippushtoken=steve&webcam&push=YjKcERS  (publisher)
 https://vdo.ninja/alpha/?view=YjKcERS (viewer via WHEP via VDO.Ninja P2P)
-https://vdo.ninja/alpha/?hidemenu&whepplay=https%3A%2F%2Fmyserver.io%2Fapi%2Fwhip&whepplaytoken=steve (viewer via WHEP directly)
+https://vdo.ninja/alpha/?hidemenu&whepplay=https%3A%2F%2Fmyserver.io%2Fapi%2Fwhep&whepplaytoken=steve (viewer via WHEP directly)
 ```
 
-You'll note you can view the stream two different ways using VDO.Ninja; as p2p guest or as a standalone viewer.
+You'll note you can view the stream two different ways using VDO.Ninja; as p2p guest or as a standalone viewer, which can be customized easily at https://vdo.ninja/alpha/whip
 
 Also note, VDO.Ninja has an HTTP (non-SSL) domain version hosted at https://insecure.vdo.ninja, if you need to playback a WHEP feed from an insecure (http-only) WHEP server.  You can't easily mix HTTP and HTTPS protocols otherwise.
+
+(We're using the alpha version of vdo.ninja in these examples because it has the newest code changes that might address reported bugs)
 
 ## API Design for Broadcast-box
 
