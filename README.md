@@ -33,30 +33,7 @@ view from http://123.123.123.123:80/api/whep /w bearer token
 
 For use with VDO.Ninja, get a domain name and use Cloudflare as your DNS provider, making use of their Flexible SSL option. This will provided simple SSL without needing to deal with SSL ourselves. Once you SSL enabled, just use https://myserver.io/api/whip and https://myserver.io/api/whep instead. This will be far more VDO.Ninja friendly, as to publish video using VDO.Ninja to WHIP requires SSL.
 
-## Key modification
-
-For a WHIP + WHEP server to support "Meshcast"-like functionality in VDO.Ninja, the WHIP header response needs to contain the WHEP playback URL.  That was done to this modified version of Broadcast-box, but it can be done to pretty much any WHIP/WHEP server fairly easily.
-
-`whep`:`/api/whep|streamtokenhere` is an example of what the header response could look like.
-
-and for WHIP/WHEP servers that support it, `whep`:`/api/whep/streamtokenhere`, this also would
-
-or a full URL can be provided, like this would work, `whep`:`https://whep.yourdomain.com/?token=streamtokenhere`
-
-This can be seen inthe code example below:
-```
-streamKey := r.Header.Get("Authorization")
-trimmedStreamkey := strings.TrimPrefix(streamKey, "Bearer ")
-res.Header().Add("Location", "/api/whip")
-res.Header().Add("Content-Type", "application/sdp")
-
-res.Header().Add("whep", "/api/whep|"+trimmedStreamkey)  // <<============== THIS IS IMPORTANT
-res.Header().Set("Access-Control-Expose-Headers", "*")  // << ===== And this as well
-
-res.Header().Set("Access-Control-Allow-Origin", "*")
-res.Header().Set("Access-Control-Allow-Methods", "*")
-res.Header().Set("Access-Control-Allow-Headers", "*")
-```
+## Use with VDO.Ninja
 
 To use this with VDO.Ninja then, in place of Meshcast, you can do:
 
@@ -74,6 +51,34 @@ You'll note you can view the stream two different ways using VDO.Ninja; as p2p g
 Also note, VDO.Ninja has an HTTP (non-SSL) domain version hosted at https://insecure.vdo.ninja, if you need to playback a WHEP feed from an insecure (http-only) WHEP server.  You can't easily mix HTTP and HTTPS protocols otherwise.
 
 (We're using the alpha version of vdo.ninja in these examples because it has the newest code changes that might address reported bugs)
+
+## Key technical modification being done here
+
+For a WHIP + WHEP server to support "Meshcast"-like functionality in VDO.Ninja, the WHIP header response needs to contain the WHEP playback URL.  That was done to this modified version of Broadcast-box, but it can be done to pretty much any WHIP/WHEP server fairly easily.
+
+`whep`:`/api/whep|streamtokenhere` is an example of what the header response could look like.
+
+and for WHIP/WHEP servers that support it, `whep`:`/api/whep/streamtokenhere`, this also would
+
+or a full URL can be provided, like this would work, `whep`:`https://whep.yourdomain.com/?token=streamtokenhere`
+
+This can be seen in the code example below, which was applied to Broadcast-box in this forked version of it.
+```
+streamKey := r.Header.Get("Authorization")
+trimmedStreamkey := strings.TrimPrefix(streamKey, "Bearer ") // remove the "Bearer" part from the stream key
+
+res.Header().Add("Location", "/api/whip")
+res.Header().Add("Content-Type", "application/sdp")
+
+res.Header().Add("whep", "/api/whep|"+trimmedStreamkey)  // <<============== THIS IS IMPORTANT
+res.Header().Set("Access-Control-Expose-Headers", "*")  // << ===== And this as well
+
+res.Header().Set("Access-Control-Allow-Origin", "*")
+res.Header().Set("Access-Control-Allow-Methods", "*")
+res.Header().Set("Access-Control-Allow-Headers", "*")
+```
+
+Really rather simple, with more enhancements to the whole approach happening all the time, so stay-tuned.
 
 ## API Design for Broadcast-box
 
