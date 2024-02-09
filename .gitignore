@@ -1,9 +1,11 @@
 broadcast-box
 
+/.github
 # dependencies
 /web/node_modules
 /web/.pnp
 .pnp.js
+
 
 # testing
 /web/coverage
