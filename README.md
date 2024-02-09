@@ -88,5 +88,9 @@ The backend exposes three endpoints (the status page is optional, if hosting loc
 - `/api/whep` - Start a WHEP Session. WHEP is video playback via WebRTC.
 - `/api/status` - Status of the all active WHIP streams
 
+## Hosted alternative
+
+I've already done a similar WHIP/WHEP Meshcast-like setup using Cloudflare, which is hosted as a service. If you don't want to host your own box, you can check out [https://cloudflare.vdo.ninja/](https://cloudflare.vdo.ninja/), which does everything we see above.  I'll add other options as I get to them, and maybe have official WHIP/WHEP support added to Meshcast itself at some point, too.
+
 [license-image]: https://img.shields.io/badge/License-MIT-yellow.svg
 [license-url]: https://opensource.org/licenses/MIT
